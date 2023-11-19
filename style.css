@@ -119,7 +119,7 @@ body {
 
 .seccion-tarea i:hover {
     color: var(--blue-light);
-    cursor: pointer;
+    cursor: pointer;KK
 }
 .line-through{
     text-decoration: line-through;
@@ -142,6 +142,85 @@ body {
    --blue-light:#dcc5b3;
    --blue-dark:#3d2b1c;
    --green: #b07d54;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem;
+    background-color: var(--white);
+}
+
+.logo {
+    max-width: 5rem;
+    border-radius: 10px;
+}
+
+.nav-list {
+    list-style-type: none;
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: var(--blue-dark);
+}
+
+.abrir-menu,
+.cerrar-menu{
+    display: none;
+}
+
+@media screen and (max-width: 550px) {
+    .abrir-menu,
+    .cerrar-menu{
+        display: block;
+        border: 0;
+        font-size: 1.25rem;
+        background-color: transparent;
+        cursor: pointer;
+    }
+
+    .abrir-menu{
+        color: var(--purple);
+    }
+
+    .cerrar-menu{
+        color: var(--white);
+    }
+
+    .nav{
+        opacity: 0;
+        visibility: hidden;
+
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        gap: 1rem;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: var(--purple);
+        padding: 2rem;
+        box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
+    }
+
+    .nav.visible{
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-list li a{
+        color: var(--white);
+    }
+
+    .nav-list{
+        flex-direction: column;
+        align-items: end;
+    }
 }
 
 body {
@@ -244,7 +323,6 @@ body {
 
 .seccion-tarea > ul p {
     font-size: 1.2rem;
-
 }
 
 
@@ -257,7 +335,6 @@ body {
     text-decoration: line-through;
     color : var(--blue-light);
 } 
-
 
 
 
