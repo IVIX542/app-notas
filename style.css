@@ -181,6 +181,8 @@ header {
         font-size: 1.25rem;
         background-color: transparent;
         cursor: pointer;
+        /*borde del menú*/
+        border-radius: 10px;
     }
 
     .abrir-menu{
