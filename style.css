@@ -148,7 +148,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: var(--white);
 }
 
@@ -228,6 +228,7 @@ header {
 
 body {
     background: linear-gradient(to bottom,var(--purple),var(--blue-light));
+    background-repeat: repeat-y;
     height: 100vh;   
     font-family: 'Oswald', sans-serif;
 }
