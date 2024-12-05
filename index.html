@@ -1,67 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NotiSeet</title>  
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <link rel="shortcut icon" href="img/logonotiseet.jpeg" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+    <title>Registro/Iniciar Sesión</title>
+    <style>
+        :root {
+           --white: blanchedalmond;
+           --purple: #432e1e;
+           --blue-light: #dcc5b3;
+           --blue-dark: #3d2b1c;
+           --green: #b07d54;
+           --light-green: #b18561;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom,var(--purple),var(--blue-light));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: var(--purple);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        h2 {
+            color: rgb(248, 199, 134);
+            text-shadow: -5px -2px 2px rgba(255, 255, 255, 0.281);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="text"], input[type="password"] {
+            background-color: var(--white);
+            width: 93%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 4px;
+            
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--green);
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: var(--light-green);
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h2>Registro</h2>
 
-    <header>
-        <img src="img/logonotiseet.jpeg" alt="logo" class="logo">
-        <button class="abrir-menu" id="abrir"><i class="bi bi-list">.</i></button>
-        <nav class="nav" id="nav">
-            <button class="cerrar-menu" id="cerrar"><i class="bi bi-x">.</i></button>
-            <ul class="nav-list">
-                <li><a href="https://ivix542.github.io/app-notas/" target="_blank">Aplicación Web</a></li>
-                <li><a href="https://ivix542.github.io/notiseet/" target="_blank">Web</a></li>
-                <li><a href="mailto: notiseet@gmail.com" target="_blank">Soporte</a></li>
-                <li><a href="#">Sobre Nosotros</a></li>
-                <li><a href="https://linktr.ee/notiseetnotiseet" target="_blank">Redes Sociales</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-<div class="container">
-    <div class="perfil">
-        <div id="fecha"></div>
-        <h1>Hola Usuario, bienvenido a NotiSeet</h1>
-        <span>Yo guardaré tus tareas</span>
+        <input type="text" id="registerUsername" placeholder="Nombre de usuario">
+        <input type="password" id="registerPassword" placeholder="Contraseña">
+        
+        <button onclick="register()">Registrar</button>
+
+        <h2>Iniciar Sesión</h2>
+
+        <input type="text" id="loginUsername" placeholder="Nombre de usuario">
+        <input type="password" id="loginPassword" placeholder="Contraseña">
+
+        <button onclick="login()">Iniciar Sesión</button>
     </div>
 
-    <div class="agregar-tarea">
-        <input type="text" id="input" placeholder="agregar una tarea">
-        <i id="boton-enter"class="fas fa-plus-circle"></i>
-    </div>
+    <script>
+        function register() {
+            const username = document.getElementById('registerUsername').value;
+            const password = document.getElementById('registerPassword').value;
+            if (username && password) {
+                localStorage.setItem('username', username);
+                localStorage.setItem('password', password);
+                alert('Registro exitoso');
+            } else {
+                alert('Por favor, complete todos los campos');
+            }
+        }
 
-    
-    <div class="seccion-tarea">
-        <h3>Tareas Pendientes: </h3>
-        <ul id="lista">
-            <!-- <li id="elemento">
-                <i class="far fa-circle co" data="realizado" id="0"></i>
-                <p class="text"> Hacer la tarea de matematicas </p>
-                <i class="fas fa-trash de" data="eliminado" id="0"></i> 
-            </li>
-            <li id="elemento">
-                <i class="far fa-circle co" data="realizado" id="0"></i>
-                <p class="text"> Lavar la ropa </p>
-                <i class="fas fa-trash de" data="eliminado" id="0"></i> 
-            </li> -->
-        </ul>
-    </div>   
-</div>
-<footer>
-    &copy NotiSeet2024
-</footer>
-<script src="index.js"></script>
+        function login() {
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const storedUsername = localStorage.getItem('username');
+            const storedPassword = localStorage.getItem('password');
+            if (username === storedUsername && password === storedPassword) {
+                window.location.href = 'notiseet.html';
+            } else {
+                alert('Nombre de usuario o contraseña incorrectos');
+            }
+        }
+    </script>
 </body>
 </html>
