@@ -75,30 +75,6 @@
         <button onclick="login()">Iniciar Sesión</button>
     </div>
 
-    <script>
-        function register() {
-            const username = document.getElementById('registerUsername').value;
-            const password = document.getElementById('registerPassword').value;
-            if (username && password) {
-                localStorage.setItem('username', username);
-                localStorage.setItem('password', password);
-                alert('Registro exitoso');
-            } else {
-                alert('Por favor, complete todos los campos');
-            }
-        }
-
-        function login() {
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            const storedUsername = localStorage.getItem('username');
-            const storedPassword = localStorage.getItem('password');
-            if (username === storedUsername && password === storedPassword) {
-                window.location.href = 'notiseet.html';
-            } else {
-                alert('Nombre de usuario o contraseña incorrectos');
-            }
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>

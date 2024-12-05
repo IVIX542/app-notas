@@ -16,20 +16,16 @@ const FECHA = new Date ()
 fecha.innerHTML = FECHA.toLocaleDateString('es-MX',{weekday: 'long', month: 'short', day:'numeric'})
 
 
-
-
-
-
-
 // funcion de agregar tarea 
 
-function agregarTarea( tarea,id,realizado,eliminado) {
+function agregarTarea( tarea,id,realizado,eliminado ) {
     if(eliminado) {return} // si existe eliminado es true si no es false 
 
     const REALIZADO = realizado ? check : uncheck // si realizado es verdadero check si no uncheck
 
-    const LINE = realizado ? lineThrough : '' 
+    const LINE = realizado ? lineThrough : '' //si LINE es igual a realizado, lo tacha
 
+    //Creación del elemento
     const elemento = `
                         <li id="elemento">
                         <i class="far ${REALIZADO}" data="realizado" id="${id}"></i>
@@ -61,9 +57,6 @@ function tareaEliminada(element){
     LIST[element.id].eliminado = true
     console.log(LIST)
 }
-
-
-
 
 
 // crear un evento para escuchar el enter y para habilitar el boton 
@@ -156,3 +149,29 @@ abrir.addEventListener("click", () => {
 cerrar.addEventListener("click", () => {
     nav.classList.remove("visible");
 })
+
+
+//Funciones de registro y login
+function register() {
+    const username = document.getElementById('registerUsername').value;
+    const password = document.getElementById('registerPassword').value;
+    if (username && password) {
+        localStorage.setItem('username', username);
+        localStorage.setItem('password', password);
+        alert('Registro exitoso');
+    } else {
+        alert('Por favor, complete todos los campos');
+    }
+}
+
+function login() {
+    const username = document.getElementById('loginUsername').value;
+    const password = document.getElementById('loginPassword').value;
+    const storedUsername = localStorage.getItem('username');
+    const storedPassword = localStorage.getItem('password');
+    if (username === storedUsername && password === storedPassword) {
+        window.open('notiseet.html', '_blank');
+    } else {
+        alert('Nombre de usuario o contraseña incorrectos');
+    }
+}
