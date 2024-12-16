@@ -170,8 +170,23 @@ function login() {
     const storedUsername = localStorage.getItem('username');
     const storedPassword = localStorage.getItem('password');
     if (username === storedUsername && password === storedPassword) {
-        window.open('notiseet.html', '_blank');
+        window.location.href = 'notiseet.html';
     } else {
         alert('Nombre de usuario o contraseña incorrectos');
     }
+}
+
+
+//Función de log-out
+document.addEventListener('DOMContentLoaded', () => {
+    const username = localStorage.getItem('username');
+    if (username) {
+        document.getElementById('username').textContent = username;
+    } else {
+        window.location.href = 'notiseet.html';
+    }
+});
+
+function logout() {
+    window.location.href = 'index.html';
 }
